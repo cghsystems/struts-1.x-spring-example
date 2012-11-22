@@ -3,15 +3,12 @@
 <struts-config>
 
     <action-mappings>
-        <action path="/test" type="org.springframework.web.struts.DelegatingActionProxy">
+            <action path="/test" type="org.springframework.web.struts.DelegatingActionProxy">
             <forward name="Success" path="main-view"/>
         </action>
     </action-mappings>
 
-    <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
-        <set-property property="contextConfigLocation"
-                      value="WEB-INF/applicationContext.xml"/>
-    </plug-in>
+    <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn" />
 
     <plug-in className="org.apache.struts.tiles.TilesPlugin">
         <set-property property="definitions-config" value="/tiles/resources/tiles-def.xml"/>

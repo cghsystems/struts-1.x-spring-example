@@ -3,10 +3,17 @@
         "http://java.sun.com/dtd/web-app_2_3.dtd">
 <web-app>
 
+    <!-- Without this spring looks for /WEB-INF/applicationContext.xml. Coincidence that ours is called that -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/applicationContext.xml</param-value>
+    </context-param>
+
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
+    <!-- Delegate all /struts requests to the Struts servlet -->
     <servlet>
         <servlet-name>action</servlet-name>
         <servlet-class>
@@ -20,6 +27,30 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
+
+    <!-- Delegate all /spring requests to the spring dispatcher servlet -->
+    <servlet>
+        <servlet-name>spring</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!--
+        <init-param>
+            <param-name>contextClass</param-name>
+            <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>net.cghsystems.definitions.web.ioc.DefinitionsControllerApplicationContext</param-value>
+        </init-param>
+        -->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+
+    <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>/spring/*</url-pattern>
+    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>action</servlet-name>

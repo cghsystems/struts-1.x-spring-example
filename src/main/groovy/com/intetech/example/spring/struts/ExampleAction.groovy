@@ -14,13 +14,11 @@ import javax.servlet.http.HttpServletResponse
  */
 class ExampleAction extends DispatchActionSupport {
 
-
     @Override
     ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
         def springManagedBean = getWebApplicationContext().getBean("springManagedBean")
         log.info("Executing my Spring managed action")
-        springManagedBean.execute();
-        return mapping.findForward("Success")
-
+        springManagedBean.execute()
+        mapping.findForward("Success")
     }
 }
