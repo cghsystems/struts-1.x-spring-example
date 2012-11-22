@@ -13,8 +13,14 @@ repositories {
     mavenLocal()
     mavenCentral()
     maven { url "http://repo.springsource.org/libs-snapshot" }
-    maven { url 'http://oss.sonatype.org/content/repositories/snapshots/' } //For spock with Groovy 2.0 support
 }
+
+/**
+ * Adds wrapper support for Gradle version 1.0-rc. This allows the
+ * gradle.bat and gradlew sh files to be created which provides
+ * support for building via Gradle for those that do not have Gradle installed
+ */
+task wrapper(type: Wrapper) { gradleVersion = '1.0-rc-3' }
 
 dependencies {
     groovy group: 'org.codehaus.groovy', name: 'groovy-all', version: GROOVY_VERSION
@@ -49,7 +55,5 @@ dependencies {
     testCompile "org.springframework:spring-test-mvc:1.0.0.M1"
     testCompile group: 'org.springframework', name: 'spring-test', version: SPRING_VERSION
     testCompile 'junit:junit:4.8.2'
-    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
-    testCompile 'org.spockframework:spock-spring:0.7-groovy-2.0'
 }
 
