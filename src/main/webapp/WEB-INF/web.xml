@@ -3,6 +3,17 @@
         "http://java.sun.com/dtd/web-app_2_3.dtd">
 <web-app>
 
+    <urlrewrite default-match-type="wildcard">
+        <rule>
+            <from>/**</from>
+            <to>/app/$1</to>
+        </rule>
+        <outbound-rule>
+            <from>/app/**</from>
+            <to>/$1</to>
+        </outbound-rule>
+    </urlrewrite>
+
     <!-- Without this spring looks for /WEB-INF/applicationContext.xml. Coincidence that ours is called that -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -12,6 +23,8 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+
+
 
     <!-- Delegate all /struts requests to the Struts servlet -->
     <servlet>
@@ -56,6 +69,8 @@
         <servlet-name>action</servlet-name>
         <url-pattern>/struts/*</url-pattern>
     </servlet-mapping>
+
+
 
 
 </web-app>

@@ -14,4 +14,28 @@
     <mvc:annotation-driven/>
     <context:component-scan base-package="com.intetech.example.spring.struts"/>
 
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+        <property name="basename" value="views"/>
+    </bean>
+
+    <!-- Can use this viewResolver over the ResourceBundleViewResolver and remove the need for a views.properties file.
+     However this ties you to one view technology. ResourceBundleViewResolver gives the flexibility of view technology
+     being allowing different view classes to be defined for each view.
+    <bean id="resourceViewResolver"
+          class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass">
+            <value>
+                org.springframework.web.servlet.view.tiles2.TilesView
+            </value>
+        </property>
+    </bean>
+    -->
+
+
+    <bean id="tilesConfigurer"
+          class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+        <property name="definitions" value="/tiles/resources/tiles-def.xml"/>
+    </bean>
+
+
 </beans>

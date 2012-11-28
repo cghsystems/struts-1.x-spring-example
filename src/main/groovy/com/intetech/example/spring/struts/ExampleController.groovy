@@ -14,11 +14,11 @@ import javax.annotation.Resource
 class ExampleController  {
 
     @Resource(name = "springManagedBean")
-    SpringManagedBean springManagedBean;
+    SpringManagedBean springManagedBean
 
     @RequestMapping("/spring-test")
     public String springTest() {
         springManagedBean.execute()
-        "success"
+        return "tilesView"
     }
 }
