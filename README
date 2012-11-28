@@ -3,4 +3,4 @@ Intetech R&D
 An example project to demonstrate that Struts 1.x and Spring can work together
 
 For those without gradle installed run 'gradle.bat test' (Windows) or 'gradlew test' (*nix) to show the examples working.
-Note the GRadle build should start and stop the Servlet container in order for the tests to execute.
+Note the Gradle build should start and stop the Servlet container in order for the tests to execute.
