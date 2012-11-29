@@ -18,16 +18,16 @@ class ServletTest {
 
     @Test
     void springTest() {
-        final strutsUrl = "http://localhost:8080/spring-struts-examples/spring/spring-test"
-        executeHttpRequestAgainstRunningServer(strutsUrl)
+        final springUrl = "http://localhost:8080/spring-struts-examples/spring/spring-test"
+        executeHttpRequestAgainstRunningServer(springUrl)
     }
 
     /**
      * Requires that the server is running at http;//localhost:8080. When this tests runs as a Gradle build
      * a server will be started automatically by gradle.build.
      */
-    private void executeHttpRequestAgainstRunningServer(String strutsUrl) {
-        final builder = new HTTPBuilder(strutsUrl)
+    private void executeHttpRequestAgainstRunningServer(String url) {
+        final builder = new HTTPBuilder(url)
 
         builder.request(Method.GET, HTML) {
             // response handler for a success response code:
