@@ -38,6 +38,7 @@ class ServletTest {
 
             response.failure = { resp ->
                 println "Unexpected error: ${resp.statusLine.statusCode} : ${resp.statusLine.reasonPhrase}"
+                assert true == false : "Received unexpected failure"
             }
         }
     }
